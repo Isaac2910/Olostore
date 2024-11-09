@@ -20,21 +20,24 @@ def homepage(request):
 
 #pour la liste des produit et la recherche des produit
 def product_list(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')  # Use .get to avoid KeyError
     if query:
-        products = Product.objects.filter(
-            Q(name_icontains=query) | Q(description_icontains=query)
-        )
+        products = Product.objects.filter(name__icontains=query)
     else:
         products = Product.objects.all()
 
-    return render(request, 'store/base.html', {'products': products})
+    return render(request, 'store/base.html', {'products': products, 'query': query})
 
 
-#Details du produit
+from django.shortcuts import render, get_object_or_404
+
+def detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'store/product.html', {'product': product})
+
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    return render(request,'store/product_detail.html', {'product': product})
+    return render(request,'store/product.html', product )
 
 
 #Fonction pour supprimer un produit du panier
@@ -82,7 +85,7 @@ def view_cart(request):
             'subtotal': product.price * quantity
         })
 
-    return render(request, 'store/base', {'products': products, 'total_price': total_price})
+    return render(request, 'store/viewspanier.html', {'products': products, 'total_price': total_price})
 
 def checkout(request):
     cart = request.session.get('cart', {})
@@ -102,6 +105,11 @@ def checkout(request):
     whatsapp_url = f"https://wa.me/{phone_number}?text={urllib.parse.quote(message)}"
     request.session['cart'] = {}  # Vider le panier après la commande
     return redirect(whatsapp_url)
+
+
+
+def addpanier(request):
+    return render(request, 'store/viewspanier.html')
 
 
 

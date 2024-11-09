@@ -19,21 +19,23 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
 from django.urls import path
-from store.views import product_list, add_to_cart, view_cart, checkout, homepage
+from store.views import product_list, add_to_cart, view_cart, checkout, homepage, product_detail, detail, addpanier
 
 urlpatterns = [
-    path('product/', product_list, name='product-list'),
+    path('', product_list, name='product-list'),
     path('add_to_cart/<int:pk>/', add_to_cart, name='add-to-cart'),
     path('view_cart/', view_cart, name='view-cart'),
     path('checkout/', checkout, name='checkout'),
     path('admin/', admin.site.urls),
-    #path('', include('store.urls')),
-    path('', homepage, name='home'),
+    #path('tev/', include('store.urls')),
+    #path('', homepage, name='home'),
+    #path('product/<int:pk>/', product_detail, name='product_detail'),
+   # path('product/', detail, name='detail'),
+    path('product/<int:product_id>/', detail, name='detail'),
+    path('panier/', addpanier, name='addpanier'),
+    
+
 ]
 
 
