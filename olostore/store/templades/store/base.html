@@ -9,7 +9,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap" async defer></script>
 </head>
 <body>
-    <header class="bg-black p-4 flex justify-evenly items-center">
+    <header class="bg-black h-[90%] p-4 flex justify-evenly items-center">
         <img src="../../static/store/image/logo.svg" alt="logo" class="w-24 h-24 object-cover">
     
         <div class="md:hidden">
@@ -43,34 +43,34 @@
     
 
     <!-- Search Bar -->
-    <div class="bg-green-500 my-2 p-4 flex justify-center">
-        <input type="text" placeholder="Rechercher..." class="p-2 rounded-l w-2/3">
+    <div class="bg-[#1aba1a] h-[90%] my-2 p-4 flex justify-center">
+        <input type="text" placeholder="Rechercher..." class="p-2 rounded-l w-2/3 " value="{{request.GET.q}}">
         <button class="bg-black p-2 rounded-r text-white">Envoyer</button>
     </div>
 
     <!-- Main Content -->
 <div>
-    <main class="flex justify-around items-center py-14 bg-black">
+    <main class="flex justify-around items-center h-[90%] py-14 bg-black">
         <h1 class="text-6xl font-bold mb-4 text-white">Trouvez ce que vous <br/>aimez, achetez ce<br/> que vous adorez !</h1>
         <img src="../../static/store/image/gif.gif" alt="image" class="object-cover w-1/3 h-1/3 rounded-xl">
     </main>
 
-    <div class="flex justify-around bg-black text-white py-9">
+    <div class="flex justify-center h-[90%] bg-black text-white py-9">
         <div class="flex flex-col items-center">
-            <img src="../../static/store/image/Container.png" alt="Icon 1">
-            <p>Livraison rapide</p>
+            <img class="h-10 w-10 mx-6 " src="../../static/store/image/Container.png" alt="Icon 1">
+            <p class="text-center">Livraison<br> rapide</p>
         </div>
         <div class="flex flex-col items-center mx-6">
-            <img src="../../static/store/image/Container(3).png" alt="Icon 2">
-            <p>Sécurité garantie</p>
+            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container(3).png" alt="Icon 2">
+            <p class="text-center">Sécurité<br> garantie</p>
         </div>
         <div class="flex flex-col items-center">
-            <img src="../../static/store/image/Container (1).png" alt="Icon 3">
-            <p>Satisfaction garantie</p>
+            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container (1).png" alt="Icon 3">
+            <p class="text-center">Satisfaction<br> garantie</p>
         </div>
         <div class="flex flex-col items-center">
-            <img src="../../static/store/image/Container (2).png" alt="Icon 3">
-            <p>Contacter nous 24h/7j</p>
+            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container (2).png" alt="Icon 3">
+            <p class="text-center">Contacter<br> nous 24h/7j</p>
         </div>
     </div>
 </div>
@@ -84,15 +84,15 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <!-- Card 1 -->
       <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="../../static/store/image/3.png" alt="VR Headset" class="w-full h-full object-cover">
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-full object-cover" >
       </div>
       <!-- Card 2 -->
       <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="../../static/store/image/2.png" alt="Shopping Cart" class="w-full h-full object-cover">
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-full object-cover" >
       </div>
       <!-- Card 3 -->
       <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="../../static/store/image/1.png" alt="Store Icon" class="w-full h-full object-cover">
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-full object-cover" >
       </div>
     </div>
 
@@ -100,53 +100,28 @@
     <div class="flex justify-between items-center mt-8 overflow-x-auto space-x-4 p-4 bg-gray-50 rounded-lg shadow-md">
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 1" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 1</span>
+        <span class="text-sm">Électronique et High-Tech</span>
       </a>
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 2" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 2</span>
+        <span class="text-sm">Jeux et Jouets</span>
       </a>
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 3" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 3</span>
+        <span class="text-sm">Livres et Médias</span>
       </a>
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 4" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 4</span>
+        <span class="text-sm">Art et Artisanat</span>
       </a>
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 5</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 6</span>
+        <span class="text-sm">Mode et Vêtements</span>
       </a>
 
       <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
         <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 7</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 8</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 9</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 10</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Icon 11</span>
+        <span class="text-sm">Beauté et Soins Personnels</span>
       </a>
       <!-- Add more icons as needed -->
     </div>
@@ -155,7 +130,7 @@
   <!-- Suggestions Section -->
   <section class="container mx-auto">
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold">Suggestions</h2>
+      <h2 class="text-2xl font-bold">Produits</h2>
       <a href="#" class="text-gray-500 hover:underline">Tout Voir</a>
     </div>
 
@@ -173,53 +148,53 @@
     <div class="flex flex-wrap justify-around items-center">
       <!-- Product Card 1 -->
       <div class="bg-white shadow-md rounded-lg p-4 w-60">
-        <img src="https://via.placeholder.com/150" alt="Product 1" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-lg font-semibold">Product Name 1</h3>
-        <p class="text-gray-500">70,000</p>
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-lg font-semibold" >{{product.name}}</h3>
+        <p class="text-gray-500">{{product.price}}</p>
         <div class="flex items-center text-yellow-500 mb-2">
           <span>★★★★☆</span>
         </div>
-        <span class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</span>
+        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Commender</button>
       </div>
 
       <!-- Product Card 2 -->
       <div class="bg-white shadow-md rounded-lg p-4 w-60">
-        <img src="../../static/store/image/tel.png" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-lg font-semibold">Product Name 2</h3>
-        <p class="text-red-500 font-bold">125,900</p>
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-lg font-semibold">{{product.name}}</h3>
+        <p class="text-red-500 font-bold">{{product.price}}</p>
         <div class="flex items-center text-yellow-500 mb-2">
           <span>★★★★☆</span>
         </div>
-        <span class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</span>
+        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
       </div>
 
       <!-- Add more Product Cards as needed -->
       <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        <img src="https://via.placeholder.com/150" alt="Product 3" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-lg font-semibold">Product Name 3</h3>
-        <p class="text-gray-500">205,000</p>
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-lg font-semibold">{{product.name}}</h3>
+        <p class="text-gray-500">{{product.price}}</p>
         <div class="flex items-center text-yellow-500 mb-2">
           <span>★★★★☆</span>
         </div>
-        <span class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</span>
+        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
       </div>    
       <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        <img src="https://via.placeholder.com/150" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-lg font-semibold">Product Name 2</h3>
-        <p class="text-red-500 font-bold">125,900</p>
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-lg font-semibold">{{product.name}}</h3>
+        <p class="text-red-500 font-bold">{{product.price}}</p>
         <div class="flex items-center text-yellow-500 mb-2">
           <span>★★★★☆</span>
         </div>
-        <span class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</span>
+        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
       </div>
       <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        <img src="https://via.placeholder.com/150" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-lg font-semibold">Product Name 2</h3>
-        <p class="text-red-500 font-bold">125,900</p>
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-lg font-semibold">{{product.name}}</h3>
+        <p class="text-red-500 font-bold">{{product.price}}</p>
         <div class="flex items-center text-yellow-500 mb-2">
           <span>★★★★☆</span>
         </div>
-        <span class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</span>
+        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
       </div>  
     </div>
   </section>
@@ -233,10 +208,10 @@
       
       <!-- Large Featured Card -->
       <div class="lg:col-span-2 mr-4 w-[50%] bg-black text-white overflow-hidden relative">
-        <img src="https://via.placeholder.com" alt="PlayStation 5" class="w-full h-64 object-cover opacity-75">
+        <img src="{{product.image.url}}" alt="{{product.name}}"  class="w-full h-64 object-cover opacity-75">
         <div class="absolute inset-0 flex flex-col justify-end p-6">
-          <h3 class="text-2xl font-semibold mb-2">PlayStation 5</h3>
-          <p class="text-gray-300 mb-4">Stock alert! Veillez surveiller l’arrivée du très convoité produit en pré-commande.</p>
+          <h3 class="text-2xl font-semibold mb-2">{{product.name}}</h3>
+          <p class="text-gray-300 mb-4">{{product.description}}</p>
           <a href="#" class="inline-block mt-2 px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
         </div>
       </div>
@@ -246,30 +221,30 @@
 <div class="bg-white  w-[50%] overflow-hidden relative">
       <!-- Secondary Card 1 -->
       <div class="bg-gray-900 m-3 text-white overflow-hidden relative">
-        <img src="https://via.placeholder.com/300x200" alt="Collections pour Femmes" class="w-full h-48 object-cover opacity-75">
+        <img src="{{product.image.url}}" alt="{{product.name}}"  class="w-full h-48 object-cover opacity-75">
         <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">Collections pour Femmes</h3>
-          <p class="text-gray-300 mb-2">Collections féminines en vedette qui offrent une nouvelle ambiance.</p>
+          <h3 class="text-lg font-semibold mb-1">{{product.name}}</h3>
+          <p class="text-gray-300 mb-2">{{product.description}}</p>
           <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
         </div>
       </div>
         <div class="w-full flex">
       <!-- Secondary Card 2 -->
       <div class="bg-gray-900 w-[50%] m-2 text-white overflow-hidden relative">
-        <img src="https://via.placeholder.com/300x200" alt="Speakers" class="w-full h-48 object-cover opacity-75">
+        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-48 object-cover opacity-75">
         <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">Speakers</h3>
-          <p class="text-gray-300 mb-2">Amazon wireless speakers.</p>
+          <h3 class="text-lg font-semibold mb-1">{{product.name}}"</h3>
+          <p class="text-gray-300 mb-2">{{product.description}}</p>
           <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
         </div>
       </div>
 
       <!-- Secondary Card 3 -->
       <div class="bg-gray-900 w-[50%] m-2 text-white overflow-hidden relative">
-        <img src="https://via.placeholder.com/300x200" alt="Perfume" class="w-full h-48 object-cover opacity-75">
+        <img src="{{product.image.url}}" alt="{{product.name}}"  class="w-full h-48 object-cover opacity-75">
         <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">Perfume</h3>
-          <p class="text-gray-300 mb-2">GUCCI amber intense aroma.</p>
+          <h3 class="text-lg font-semibold mb-1">{{product.name}}</h3>
+          <p class="text-gray-300 mb-2">{{product.description}}</p>
           <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
         </div>
     </div>
@@ -284,9 +259,6 @@
             <div>
                 <h1 class="text-2xl font-semibold">Ogooué Labs</h1>
                 <p class="text-gray-600">4.7 (3 avis) - Centre d'innovation</p>
-            </div>
-            <div>
-                <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Enregistrer</button>
             </div>
         </div>
 
