@@ -126,6 +126,9 @@ header::before {
     background: linear-gradient(45deg, #1aba1a, #0ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text; /* Préfixe pour les anciens navigateurs Webkit */
+        background-clip: text; /* Standard pour tous les navigateurs modernes */
+    
 }
 
 /* Wrapper qui cache l'overflow */
