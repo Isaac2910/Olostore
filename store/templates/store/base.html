@@ -19,57 +19,105 @@
     ></script>
   </head>
   <body>
-    <header class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg">
-      <img src="{% static '/store/image/logo.svg' %}" 
-           alt="O'LO Store Logo - Modern minimalist design in green and white" 
-           class="w-24 h-24 object-cover logo-animate">
-  
+    <header
+      class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg"
+    >
+      <img
+        src="{% static '/store/image/logo.svg' %}"
+        alt="O'LO Store Logo - Modern minimalist design in green and white"
+        class="w-24 h-24 object-cover logo-animate"
+      />
+
       <div class="md:hidden">
-          <button id="menu-toggle" 
-                  class="text-white focus:outline-none icon-hover"
-                  aria-expanded="false"
-                  aria-controls="mobile-menu">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
-          </button>
+        <button
+          id="menu-toggle"
+          class="text-white focus:outline-none icon-hover"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
       </div>
-  
+
       <nav id="menu" class="hidden md:flex space-x-4 text-white">
-          <a href="{% url 'products' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Products</a>
-          <a href="{% url 'contact' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Contact</a>
+        <a
+          href="{% url 'products' %}"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Products</a
+        >
+        <a
+          href="{% url 'contact' %}"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Contact</a
+        >
       </nav>
-  
+
       <div class="flex space-x-4">
-          <img src="{% static 'store/image/Like.svg' %}" 
-               alt="Wishlist icon - Heart symbol in white" 
-               class="w-10 h-10 object-cover icon-hover">
-          <img src="{% static 'store/image/Link.svg' %}" 
-               alt="User account icon - Profile symbol in white" 
-               class="w-10 h-10 object-cover icon-hover">
+        <img
+          src="{% static 'store/image/Like.svg' %}"
+          alt="Wishlist icon - Heart symbol in white"
+          class="w-10 h-10 object-cover icon-hover"
+        />
+        <img
+          src="{% static 'store/image/Link.svg' %}"
+          alt="User account icon - Profile symbol in white"
+          class="w-10 h-10 object-cover icon-hover"
+        />
       </div>
-  </header>
+    </header>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-black text-white transform transition-transform duration-300 mx-1.5">
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden bg-black text-white transform transition-transform duration-300 mx-1.5"
+    >
       <nav class="flex flex-col space-y-2 p-4">
-          <a href="{% url 'products' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Products</a>
-          <a href="{% url 'contact' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Contact</a>
+        <a
+          href="{% url 'products' %}"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Products</a
+        >
+        <a
+          href="{% url 'contact' %}"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Contact</a
+        >
       </nav>
-  </div>
+    </div>
 
-  <form method="get" class="bg-[#1aba1a] my-2 p-4 flex justify-center mx-5 rounded-lg" role="search">
+    <form
+      method="get"
+      class="bg-[#1aba1a] my-2 p-4 flex justify-center mx-5 rounded-lg"
+      role="search"
+    >
       <label for="search" class="sr-only">Search products</label>
-      <input type="search" 
-             id="search"
-             name="q" 
-             placeholder="Rechercher..." 
-             class="search-bar p-2 rounded-l w-2/3 h-10 focus:outline-none"
-             value="{{ query }}">
-      <button type="submit" 
-              class="bg-black p-2 rounded-r text-white h-10 hover:bg-gray-800 transition-colors duration-300 icon-hover">
-          Envoyer
+      <input
+        type="search"
+        id="search"
+        name="q"
+        placeholder="Rechercher..."
+        class="search-bar p-2 rounded-l w-2/3 h-10 focus:outline-none"
+        value="{{ query }}"
+      />
+      <button
+        type="submit"
+        class="bg-black p-2 rounded-r text-white h-10 hover:bg-gray-800 transition-colors duration-300 icon-hover"
+      >
+        Envoyer
       </button>
-  </form>
+    </form>
 
     <!-- Main Content -->
     <div>
@@ -88,7 +136,9 @@
         />
       </main>
 
-      <div class="flex justify-evenly h-[] bg-black text-white py-12 mx-5 rounded-b-lg">
+      <div
+        class="flex justify-evenly h-[] bg-black text-white py-12 mx-5 rounded-b-lg"
+      >
         <div class="flex flex-col items-center">
           <img
             class="h-10 w-10 mx-6"
