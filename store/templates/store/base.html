@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Olo Shop</title>
+    <title>O4lo Store</title>
     <link rel="stylesheet" href="../../static/store/css/global.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -19,7 +19,7 @@
     ></script>
   </head>
   <body>
-    <header class="bg-black h-[96px] p-4 flex justify-evenly items-center">
+    <header class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg">
       <img src="{% static '/store/image/logo.svg' %}" 
            alt="O'LO Store Logo - Modern minimalist design in green and white" 
            class="w-24 h-24 object-cover logo-animate">
@@ -50,14 +50,14 @@
       </div>
   </header>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-black text-white transform transition-transform duration-300">
+  <div id="mobile-menu" class="hidden md:hidden bg-black text-white transform transition-transform duration-300 mx-1.5">
       <nav class="flex flex-col space-y-2 p-4">
           <a href="{% url 'products' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Products</a>
           <a href="{% url 'contact' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Contact</a>
       </nav>
   </div>
 
-  <form method="get" class="bg-[#1aba1a] my-2 p-4 flex justify-center" role="search">
+  <form method="get" class="bg-[#1aba1a] my-2 p-4 flex justify-center mx-5 rounded-lg" role="search">
       <label for="search" class="sr-only">Search products</label>
       <input type="search" 
              id="search"
@@ -74,7 +74,7 @@
     <!-- Main Content -->
     <div>
       <main
-        class="flex flex-col lg:flex-row justify-around items-center h-[] pt-14 bg-black"
+        class="flex flex-col lg:flex-row justify-around items-center h-[] py-14 bg-black mx-5 rounded-t-lg"
       >
         <h1 class="text-6xl font-bold mb-4 text-white text-center lg:text-left">
           Trouvez ce que vous <br />
@@ -84,11 +84,11 @@
         <img
           src="../../static/store/image/gif.gif"
           alt="image"
-          class="object-cover w-1/2 h-full rounded-xl"
+          class="object-cover w-[30%] h-[70%] rounded-xl"
         />
       </main>
 
-      <div class="flex justify-evenly h-[] bg-black text-white py-9">
+      <div class="flex justify-evenly h-[] bg-black text-white py-12 mx-5 rounded-b-lg">
         <div class="flex flex-col items-center">
           <img
             class="h-10 w-10 mx-6"
@@ -153,7 +153,7 @@
             />
           </div>
           <!-- Card 2 -->
-          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="bg-white shadow-md rounded-lg mx-4 overflow-hidden">
             <img
               src="../../static/store/image/2.png"
               alt="{{product.name}}"

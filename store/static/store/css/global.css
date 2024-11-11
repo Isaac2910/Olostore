@@ -131,6 +131,9 @@ header::before {
 /* Wrapper qui cache l'overflow */
 
 .cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: 100%;
     overflow: hidden;
