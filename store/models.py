@@ -8,7 +8,7 @@ class Product(models.Model):
     TYPE_CHOICES = [
         ('future', 'Produit à venir'),
         ('available', 'Produit disponible'),
-        ('out_of_stock', 'Produit en rupture de stock')
+        ('tendance', 'Produits les plus vendus')
     ]
 
     name = models.CharField(max_length=100)

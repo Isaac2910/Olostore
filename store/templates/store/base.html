@@ -2,429 +2,525 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olo Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O'lo Store</title>
+    <link rel="stylesheet" href="../../static/store/css/global.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap" async defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <header class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg">
+      <img src="{% static '/store/image/logo.svg' %}" 
+           alt="O'LO Store Logo - Modern minimalist design in green and white" 
+           class="w-24 h-24 object-cover logo-animate">
+  
+      <div class="md:hidden">
+          <button id="menu-toggle" 
+                  class="text-white focus:outline-none icon-hover"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+          </button>
+      </div>
+  
+      <nav id="menu" class="hidden md:flex space-x-4 text-white">
+          <a href="{% url 'product_listes' %}" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Products</a>
+          <a href="#" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Contact</a>
+      </nav>
+  
+      <div class="flex space-x-4">
+          <img src="{% static 'store/image/Like.svg' %}" 
+               alt="Wishlist icon - Heart symbol in white" 
+               class="w-10 h-10 object-cover icon-hover">
+          <a href="{% url 'view_cart'%}"><img src="{% static 'store/image/Link.svg' %}" 
+               alt="User account icon - Profile symbol in white" 
+               class="w-10 h-10 object-cover icon-hover"></a>
+      </div>
+  </header>
 
-</head>
-<body>
-    <header class="bg-black h-[90%] p-4 flex justify-evenly items-center">
-        <img src="{% static  '/store/image/logo.svg'%}" alt="logo" class="w-24 h-24 object-cover">
-    
-        <div class="md:hidden">
-            <button id="menu-toggle" class="text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </div>
-    
-        <nav id="menu" class="hidden md:flex space-x-4 text-white">
-            <a href="#" class="hover:text-[#1aba1a]">Products</a>
-            <a href="#" class="hover:text-[#1aba1a]">Contact</a>
-        </nav>
-    
-        <div class="flex space-x-4">
-            <img src="../../static/store/image/Like.svg" alt="like" class="w-10 h-10 object-cover">
-            <img src="../../static/store/image/Link.svg" alt="link" class="w-10 h-10 object-cover">
-        </div>
-    </header>
-    
-    <div id="mobile-menu" class="hidden md:hidden bg-black text-white">
-        <nav class="flex flex-col space-y-2 p-4">
-            <a href="#produits" class="hover:text-[#1aba1a]">Products</a>
-            <a href="#" class="hover:text-[#1aba1a]">Contact</a>
-        </nav>
-    </div>
-    
+  <div id="mobile-menu" class="hidden md:hidden bg-black text-white transform transition-transform duration-300 mx-1.5">
+      <nav class="flex flex-col space-y-2 p-4">
+          <a href="#" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Products</a>
+          <a href="https:isaacomar29@gmail.com" class="nav-item hover:text-[#1aba1a] transition-colors duration-300">Contact</a>
+      </nav>
+  </div>
 
-    
-    
+  <form method="get" action="{% url 'search_products' %}" class="bg-[#1aba1a] my-2 p-4 flex justify-center mx-5 rounded-lg" role="search">
+    <label for="search" class="sr-only">Cherchez un produit</label>
+    <input type="search" 
+           id="search"
+           name="q" 
+           placeholder="Rechercher..." 
+           class="search-bar p-2 rounded-l w-2/3 h-10 focus:outline-none"
+           value="{{ query }}">
+    <button type="submit" 
+            class="bg-black p-2 rounded-r text-white h-10 hover:bg-gray-800 transition-colors duration-300 icon-hover">
+        Rechercher
+    </button>
+</form>
 
-    <!-- Search Bar -->
-
-    <form method="get" class="bg-[#1aba1a] h-[90%] my-2 p-4 flex justify-center">
-        <input type="text" name="q" placeholder="Rechercher..." class="p-2 rounded-l w-2/3" value="{{ query }}">
-        <button class="bg-black p-2 rounded-r text-white">Envoyer</button>
-    </form>
-    
 
     <!-- Main Content -->
-<div>
-    <main class="flex justify-around items-center h-[90%] py-14 bg-black">
-        <h1 class="text-6xl font-bold mb-4 text-white">Trouvez ce que vous <br/>aimez, achetez ce<br/> que vous adorez !</h1>
-        <img src="../../static/store/image/gif.gif" alt="image" class="object-cover w-1/3 h-1/3 rounded-xl">
-    </main>
+    <div>
+      <main
+        class="flex flex-col lg:flex-row justify-around items-center h-[] py-14 bg-black mx-5 rounded-t-lg"
+      >
+        <h1 class="text-6xl font-bold mb-4 text-white text-center lg:text-left">
+          Trouvez ce que vous <br />
+          aimez, achetez ce<br />
+          que vous adorez !
+        </h1>
+        <img
+          src="../../static/store/image/gif.gif"
+          alt="image"
+          class="object-cover w-[30%] h-[70%] rounded-xl"
+        />
+      </main>
 
-    <div class="flex justify-center h-[90%] bg-black text-white py-9">
+      <div class="flex justify-evenly h-[] bg-black text-white py-12 mx-5 rounded-b-lg">
         <div class="flex flex-col items-center">
-            <img class="h-10 w-10 mx-6 " src="../../static/store/image/Container.png" alt="Icon 1">
-            <p class="text-center">Livraison<br> rapide</p>
+          <img
+            class="h-10 w-10 mx-6"
+            src="../../static/store/image/Container.png"
+            alt="Icon 1"
+          />
+          <p class="text-center">
+            Livraison<br />
+            rapide
+          </p>
         </div>
         <div class="flex flex-col items-center mx-6">
-            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container(3).png" alt="Icon 2">
-            <p class="text-center">Sécurité<br> garantie</p>
+          <img
+            class="h-10 w-10 mx-6"
+            src="../../static/store/image/Container(3).png"
+            alt="Icon 2"
+          />
+          <p class="text-center">
+            Sécurité<br />
+            garantie
+          </p>
         </div>
         <div class="flex flex-col items-center">
-            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container (1).png" alt="Icon 3">
-            <p class="text-center">Satisfaction<br> garantie</p>
+          <img
+            class="h-10 w-10 mx-6"
+            src="../../static/store/image/Container (1).png"
+            alt="Icon 3"
+          />
+          <p class="text-center">
+            Satisfaction<br />
+            garantie
+          </p>
         </div>
         <div class="flex flex-col items-center">
-            <img class="h-10 w-10 mx-6" src="../../static/store/image/Container (2).png" alt="Icon 3">
-            <p class="text-center">Contacter<br> nous 24h/7j</p>
+          <img
+            class="h-10 w-10 mx-6"
+            src="../../static/store/image/Container (2).png"
+            alt="Icon 3"
+          />
+          <p class="text-center">
+            Contacter<br />
+            nous 24h/7j
+          </p>
         </div>
-    </div>
-</div>
-   <!-- Tendance Section -->
-  <section class="container mx-auto">
-    <div class="flex justify-between items-center my-9">
-      <h2 class="text-2xl font-bold">Tendance</h2>
-    </div>
-
-    <!-- Main Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <!-- Card 1 -->
-      <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="../../static/store/image/1.png" alt="{{product.name}}" class="w-full h-full object-cover" >
-      </div>
-      <!-- Card 2 -->
-      <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="../../static/store/image/2.png" alt="{{product.name}}" class="w-full h-full object-cover" >
-      </div>
-      <!-- Card 3 -->
-      <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img src="{../../static/store/image/3.png" alt="{{product.name}}" class="w-full h-full object-cover" >
       </div>
     </div>
+    <!-- Tendance Section -->
+    <section class="container mx-auto">
+      <div class="flex justify-between items-center my-9">
+        <h2 class="text-2xl font-bold">Tendance</h2>
+      </div>
 
-    <!-- Category Carousel -->
-    <div class="flex justify-between items-center mt-8 overflow-x-auto space-x-4 p-4 bg-gray-50 rounded-lg shadow-md">
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 1" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Électronique et High-Tech</span>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 2" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Jeux et Jouets</span>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 3" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Livres et Médias</span>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 4" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Art et Artisanat</span>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Mode et Vêtements</span>
-      </a>
-
-      <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-500">
-        <img src="https://via.placeholder.com/50" alt="Icon 5" class="w-10 h-10 mb-1 rounded-[100%]">
-        <span class="text-sm">Beauté et Soins Personnels</span>
-      </a>
-      <!-- Add more icons as needed -->
-    </div>
-  </section>
-
-  <!-- Suggestions Section -->
-  <section class="container mx-auto">
-    <div class="flex justify-between items-center mb-6">
-      <h2 id="produits" class="text-2xl font-bold">Produits</h2>
-      <a href="#" class="text-gray-500 hover:underline">Tout Voir</a>
-    </div>
-
-    <!-- Filter Buttons -->
-    <div class="flex space-x-4 mb-6">
-      <button class="px-4 py-2 bg-black text-white rounded-full">Tout</button>
-      <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300">Electronics</button>
-      <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300">Houseware</button>
-      <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300">70% OFF</button>
-      <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300">50% OFF</button>
-      <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300">25% OFF</button>
-    </div>
-   
-    <!-- Product Grid -->
-    <div class="flex flex-wrap justify-around items-center">
-      <!-- Product Card 1 -->
-      <div class="flex flex-wrap justify-around items-center">
-    {% for product in products %}
-
-        <div class="bg-white shadow-md rounded-lg p-4 w-60">
-          {% if product.image %}
-          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-40 object-cover rounded-lg mb-4">
-          {% endif %}
-          <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-          <p class="text-gray-500">{{ product.price }}</p>
-          <div class="flex items-center text-yellow-500 mb-2">
-            <span>★★★★☆</span>
+      <!-- Main Cards Wrapper -->
+      <div class="cards-wrapper relative overflow-hidden">
+        <div class="card-slider flex transition-transform duration-1000">
+          <!-- Card 1 -->
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="../../static/store/image/1.png"
+              alt="{{product.name}}"
+              class="w-full h-full object-cover"
+            />
           </div>
-          <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">
-            <a href="{% url 'detail' product.id %}">Commander</a>
-          </button>
-        </div>
-     
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="bg-white shadow-md rounded-lg p-4 w-60">
-        {% if product.image %}
-        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
-        {% endif %}
-        <h3 class="text-lg font-semibold">{{product.name}}</h3>
-        <p class="text-red-500 font-bold">{{product.price}}</p>
-        <div class="flex items-center text-yellow-500 mb-2">
-          <span>★★★★☆</span>
-        </div>
-        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
-      </div>
-
-      <!-- Add more Product Cards as needed -->
-      <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        {% if product.image %}
-        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
-        {% endif %}
-        <h3 class="text-lg font-semibold">{{product.name}}</h3>
-        <p class="text-gray-500">{{product.price}}</p>
-        <div class="flex items-center text-yellow-500 mb-2">
-          <span>★★★★☆</span>
-        </div>
-        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
-      </div>    
-      <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        {% if product.image %}
-        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
-        {% endif %}
-        <h3 class="text-lg font-semibold">{{product.name}}</h3>
-        <p class="text-red-500 font-bold">{{product.price}}</p>
-        <div class="flex items-center text-yellow-500 mb-2">
-          <span>★★★★☆</span>
-        </div>
-        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
-      </div>
-      <div class="bg-white shadow-md rounded-lg p-2 w-60">
-        {% if product.image %}
-        <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-40 object-cover rounded-lg mb-4">
-        {% endif %}
-        <h3 class="text-lg font-semibold">{{product.name}}</h3>
-        <p class="text-red-500 font-bold">{{product.price}}</p>
-        <div class="flex items-center text-yellow-500 mb-2">
-          <span>★★★★☆</span>
-        </div>
-        <button class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded">Promo</button>
-      </div> 
-   
-    {% endfor %} 
-    </div>
-    
-  </section>
-  <!-- Main Section -->
-  <section class="container mx-auto">
-    <!-- Title -->
-    <h2 class="text-3xl font-bold mb-6">à venir</h2>
-
-    <!-- Grid Layout -->
-    <div class="flex">
-      
-      <!-- Large Featured Card -->
-      <div class="lg:col-span-2 mr-4 w-[50%] bg-black text-white overflow-hidden relative">
-        {% if product.image %}
-        <img src="../../static/store/image/WhatsApp Image 2024-11-09 at 11.21.46.jpeg" alt="{{product.name}}"  class="w-full h-64 object-cover opacity-75">
-        {% endif %}
-        <div class="absolute inset-0 flex flex-col justify-end p-6">
-          <h3 class="text-2xl font-semibold mb-2">{{product.name}}</h3>
-          <p class="text-gray-300 mb-4">{{product.description}}</p>
-          <a href="#" class="inline-block mt-2 px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
+          <!-- Card 2 -->
+          <div class="bg-white shadow-md rounded-lg mx-4 overflow-hidden">
+            <img
+              src="../../static/store/image/2.png"
+              alt="{{product.name}}"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="../../static/store/image/3.png"
+              alt="{{product.name}}"
+              class="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
+    </section>
 
-
-
-<div class="bg-white  w-[50%] overflow-hidden relative">
-      <!-- Secondary Card 1 -->
-      <div class="bg-gray-900 m-3 text-white overflow-hidden relative">
-        <img src="../../static/store/image/bad.jpeg" alt="{{product.name}}"  class="w-full h-48 object-cover opacity-75">
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">{{product.name}}</h3>
-          <p class="text-gray-300 mb-2">{{product.description}}</p>
-          <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
-        </div>
-      </div>
-        <div class="w-full flex">
-      <!-- Secondary Card 2 -->
-      <div class="bg-gray-900 w-[50%] m-2 text-white overflow-hidden relative">
-        <img src="../../static/store/image/go.jpeg" alt="{{product.name}}" class="w-full h-48 object-cover opacity-75">
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">{{product.name}}"</h3>
-          <p class="text-gray-300 mb-2">{{product.description}}</p>
-          <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
-        </div>
+    <!-- Suggestions Section -->
+    <section class="container mx-auto">
+      <div class="flex justify-between items-center mb-6">
+        <h2 id="produits" class="text-2xl font-bold">Produits</h2>
+        <a href="{% url 'product_listes' %}" class="text-gray-500 hover:underline">Tout Voir</a>
       </div>
 
-      <!-- Secondary Card 3 -->
-      <div class="bg-gray-900 w-[50%] m-2 text-white overflow-hidden relative">
-        <img src="../../static/store/image/pafum.jpeg" alt="{{product.name}}"  class="w-full h-48 object-cover opacity-75">
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <h3 class="text-lg font-semibold mb-1">{{product.name}}</h3>
-          <p class="text-gray-300 mb-2">{{product.description}}</p>
-          <a href="#" class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800">Shop Now</a>
+      <!-- Product Grid -->
+      <div class="container mx-auto">
+        <div class="flex flex-wrap justify-around items-center">
+          <!-- Wrapper for horizontal scroll -->
+          <div class="overflow-x-auto py-4">
+            <div class="flex space-x-4">
+              <!-- Product Card 1 -->
+              {% for product in available_products %}
+              <div class="flex-shrink-0 bg-white shadow-md rounded-lg p-4 w-60">
+                {% if product.image %}
+                <img
+                  src="{{ product.image.url }}"
+                  alt="{{ product.name }}"
+                  class="w-full h-40 object-cover rounded-lg mb-4"
+                />
+                {% endif %}
+                <h3 class="text-lg font-semibold"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
+                <p class="text-gray-500">{{ product.price }}</p>
+                <div class="flex items-center text-yellow-500 mb-2">
+                  <span>★★★★☆</span>
+                </div>
+                <button
+                  class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded"
+                >
+                  <a href="{% url 'add_to_cart' product.id %}">Ajouter au panier</a>
+                </button>
+                <button
+                class="inline-block px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded"
+              >
+                <a href="{% url 'checkout1'  product.id %}">Commander</a>
+              </button>
+              </div>
+
+             
+              {% endfor %}
+            </div>
+          </div>
         </div>
-    </div>
       </div>
-     
-</div>
-    </div>
-  </section>
+    </section>
+    <!-- Main Section -->
+    <section class="container mx-auto">
+      <!-- Title -->
+      <h2 class="text-3xl font-bold mb-6">à venir</h2>
+
+      <!-- Grid Layout -->
+      <div class="flex">
+        <!-- Large Featured Card -->
+        <div
+          class="lg:col-span-2 mr-4 w-[50%] bg-black text-white overflow-hidden relative"
+        >
+          {% if product.image %}
+          <img
+            src="../../static/store/image/WhatsApp Image 2024-11-09 at 11.21.46.jpeg"
+            alt="{{product.name}}"
+            class="w-full h-64 object-cover opacity-75"
+          />
+          {% endif %}
+          <div class="absolute inset-0 flex flex-col justify-end p-6">
+            <h3 class="text-2xl font-semibold mb-2">{{product.name}}</h3>
+            <p class="text-gray-300 mb-4">{{product.description}}</p>
+            <a
+              href="#"
+              class="inline-block mt-2 px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800"
+              >Reserver</a
+            >
+          </div>
+        </div>
+
+        <div class="bg-white w-[50%] overflow-hidden relative">
+          <!-- Secondary Card 1 -->
+          <div class="bg-gray-900 m-3 text-white overflow-hidden relative">
+            <img
+              src="../../static/store/image/bad.jpeg"
+              alt="{{product.name}}"
+              class="w-full h-48 object-cover opacity-75"
+            />
+            <div class="absolute inset-0 flex flex-col justify-end p-4">
+              <h3 class="text-lg font-semibold mb-1">{{product.name}}</h3>
+              <p class="text-gray-300 mb-2">{{product.description}}</p>
+              <a
+                href="#"
+                class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800"
+                >Reserver</a
+              >
+            </div>
+          </div>
+          <div class="w-full flex">
+            <!-- Secondary Card 2 -->
+            <div
+              class="bg-gray-900 w-[50%] m-2 text-white overflow-hidden relative"
+            >
+              <img
+                src="../../static/store/image/go.jpeg"
+                alt="{{product.name}}"
+                class="w-full h-48 object-cover opacity-75"
+              />
+              <div class="absolute inset-0 flex flex-col justify-end p-4">
+                <h3 class="text-lg font-semibold mb-1">{{product.name}}"</h3>
+                <p class="text-gray-300 mb-2">{{product.description}}</p>
+                <a
+                  href="#"
+                  class="inline-block px-3 py-1 bg-transparent text-white rounded hover:bg-gray-800"
+                  >Reserver</a
+                >
+              </div>
+            </div>
+
+            <!-- Secondary Card 3 -->
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Main Container -->
     <div class="container mx-auto p-4">
-        <!-- Header Section -->
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-semibold">Ogooué Labs</h1>
-                <p class="text-gray-600">4.7 (3 avis) - Centre d'innovation</p>
-            </div>
+      <!-- Header Section -->
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-semibold">Ogooué Labs</h1>
+          <p class="text-gray-600">4.7 (3 avis) - Centre d'innovation</p>
+        </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="flex flex-col lg:flex-row mt-6 justify">
+        <!-- Sidebar -->
+        <div class="lg:w-1/3 bg-white rounded-lg shadow-lg p-4 space-y-4">
+          <img
+            src="../../static/store/image/OIP-removebg-preview 1.svg"
+            alt="Ogooué Labs"
+            class="rounded-lg mb-4"
+          />
+          <p><strong>Adresse:</strong> C76+2HQ, 3rd Principal, Libreville</p>
+          <p>
+            <strong>Site web:</strong>
+            <a href="https://ogooeelabs.com" class="text-blue-500"
+              >ogooeelabs.com</a
+            >
+          </p>
+          <p><strong>Categories:</strong> Entreprise, Argent, Bien-être</p>
+          <button
+            class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+          >
+            À propos
+          </button>
         </div>
 
-        <!-- Content Section -->
-        <div class="flex flex-col lg:flex-row mt-6 justify">
-            <!-- Sidebar -->
-            <div class="lg:w-1/3 bg-white rounded-lg shadow-lg p-4 space-y-4">
-                <img src="../../static/store/image/OIP-removebg-preview 1.svg" alt="Ogooué Labs" class="rounded-lg mb-4">
-                <p><strong>Adresse:</strong> C76+2HQ, 3rd Principal, Libreville</p>
-                <p><strong>Site web:</strong> <a href="https://ogooeelabs.com" class="text-blue-500">ogooeelabs.com</a></p>
-                <p><strong>Categories:</strong> Entreprise, Argent, Bien-être</p>
-                <button class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">À propos</button>
-            </div>
-
-            <!-- Map Section -->
-            <div class="lg:w-2/3 mt-6 lg:mt-0 lg:ml-6">
-                <div id="map" class="w-full h-96 rounded-lg shadow-lg"></div>
-            </div>
+        <!-- Map Section -->
+        <div class="lg:w-2/3 mt-6 lg:mt-0 lg:ml-6">
+          <div id="map" class="w-full h-96 rounded-lg shadow-lg"></div>
         </div>
+      </div>
 
-        <!-- Description Section -->
-        <div class="mt-6 flex justify-center flex-col text-center items-center rounded-lg shadow-lg p-6 bg-cover bg-center" style="background-image: url('./asset/logo_section.svg');">
-            <p>
-                Lancée en 2024 par l'ONG Ogooué Labs, Oto Store est une application de e-commerce qui change la donne au Gabon. 
-                Elle a été créée <br> pour vous offrir une large gamme de produits tendances. <br> 
-                Avec Oto Store, vous pouvez facilement trouver et acheter des produits authentiques.
-            </p>
-            <p class="mt-4">
-                Rejoignez la communauté Oto Store et vivez une expérience shopping qui soutient notre culture et notre savoir-faire. <br>
-                Utilisez l'application dès maintenant et commencez à explorer le meilleur du Gabon !
-            </p>
-        </div>
+      <!-- Description Section -->
+      <div
+        class="mt-6 flex justify-center flex-col text-center items-center rounded-lg shadow-lg p-6 bg-cover bg-center"
+        style="background-image: url('./asset/logo_section.svg')"
+      >
+        <p>
+          Lancée en 2024 par l'ONG Ogooué Labs, Oto Store est une application de
+          e-commerce qui change la donne au Gabon. Elle a été créée <br />
+          pour vous offrir une large gamme de produits tendances. <br />
+          Avec Oto Store, vous pouvez facilement trouver et acheter des produits
+          authentiques.
+        </p>
+        <p class="mt-4">
+          Rejoignez la communauté Oto Store et vivez une expérience shopping qui
+          soutient notre culture et notre savoir-faire. <br />
+          Utilisez l'application dès maintenant et commencez à explorer le
+          meilleur du Gabon !
+        </p>
+      </div>
     </div>
-<!-- Footer Section -->
-<footer class="bg-gray-200 text-gray-700 py-8">
-    <div class="container mx-auto px-6 lg:px-20">
-        <!-- Top Section -->
-        <div class="flex flex-col lg:flex-row justify-between border-b border-gray-300 pb-6 mb-6">
-            <!-- Contact Information -->
-            <div class="mb-6 lg:mb-0">
-                <h3 class="font-bold text-lg">O’LO STORE</h3>
-                <p class="mt-2">HOTLINE 24/7</p>
-                <p class="text-green-600 font-bold text-lg">+241 074 XX XX XX</p>
-                <p class="mt-2">Libreville, Gabon</p>
-                <p>contact@ogoneepire.com</p>
-                <div class="flex mt-4 space-x-2">
-                    <!-- Social Media Icons (Replace with real icons if available) -->
-                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
-                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
-                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
-                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
-                </div>
+    <!-- Footer Section -->
+    <footer class="bg-gray-200 text-gray-700 py-8">
+      <div class="container mx-auto px-6 lg:px-20">
+        <!-- Section du haut -->
+        <div
+          class="flex flex-col lg:flex-row justify-between border-b border-gray-300 pb-6 mb-6"
+        >
+          <!-- Informations de contact -->
+          <div class="mb-6 lg:mb-0">
+            <h3 class="font-bold text-lg">O’LO STORE</h3>
+            <p class="mt-2">HOTLINE 24/7</p>
+            <p class="text-green-600 font-bold text-lg">+241 074 XX XX XX</p>
+            <p class="mt-2">Libreville, Gabon</p>
+            <p>contact@ogoneepire.com</p>
+            <div class="flex mt-4 space-x-2">
+              <!-- Icônes des réseaux sociaux (remplacer par de vrais icônes si disponibles) -->
+              <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+              <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+              <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+              <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Section des liens -->
+          <div class="flex flex-wrap justify-between w-full lg:w-3/5">
+            <!-- Catégories principales -->
+            <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
+              <h4 class="font-bold text-gray-800 mb-4">
+                CATÉGORIES PRINCIPALES
+              </h4>
+              <ul class="space-y-2 text-gray-600">
+                <li>Ordinateurs portables</li>
+                <li>PC & Ordinateurs</li>
+                <li>Téléphones mobiles</li>
+                <li>Tablettes</li>
+                <li>Jeux & VR</li>
+                <li>Réseaux</li>
+                <li>Appareils photo</li>
+                <li>Sonorisation</li>
+                <li>Bureau</li>
+              </ul>
             </div>
 
-            <!-- Links Section -->
-            <div class="flex flex-wrap justify-between w-full lg:w-3/5">
-                <!-- Top Categories -->
-                <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
-                    <h4 class="font-bold text-gray-800 mb-4">TOP CATEGORIES</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>Laptops</li>
-                        <li>PC & Computers</li>
-                        <li>Cell Phones</li>
-                        <li>Tablets</li>
-                        <li>Gaming & VR</li>
-                        <li>Networks</li>
-                        <li>Cameras</li>
-                        <li>Sounds</li>
-                        <li>Office</li>
-                    </ul>
-                </div>
-
-                <!-- Company -->
-                <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
-                    <h4 class="font-bold text-gray-800 mb-4">COMPANY</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>About Seva</li>
-                        <li>Contact</li>
-                        <li>Career</li>
-                        <li>Blog</li>
-                        <li>Sitemap</li>
-                        <li>Store Locations</li>
-                    </ul>
-                </div>
-
-                <!-- Help Center -->
-                <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
-                    <h4 class="font-bold text-gray-800 mb-4">HELP CENTER</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>Customer Service</li>
-                        <li>Policy</li>
-                        <li>Terms & Conditions</li>
-                        <li>Track Order</li>
-                        <li>FAQs</li>
-                        <li>My Account</li>
-                        <li>Product Support</li>
-                    </ul>
-                </div>
-
-                <!-- Partner -->
-                <div class="w-1/2 lg:w-1/5">
-                    <h4 class="font-bold text-gray-800 mb-4">PARTNER</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>Become Seller</li>
-                        <li>Affiliate</li>
-                        <li>Advertise</li>
-                        <li>Partnership</li>
-                    </ul>
-                </div>
+            <!-- Entreprise -->
+            <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
+              <h4 class="font-bold text-gray-800 mb-4">ENTREPRISE</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li>À propos </li>
+                <li>Contact</li>
+                <li>Carrière</li>
+                <li>Blog</li>
+                <li>Sitemap</li>
+                <li>Magasins</li>
+              </ul>
             </div>
+
+            <!-- Centre d'Aide -->
+            <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
+              <h4 class="font-bold text-gray-800 mb-4">CENTRE D'AIDE</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li>Service Client</li>
+                <li>Politique</li>
+                <li>Conditions générales</li>
+                <li>Suivi de commande</li>
+                <li>FAQ</li>
+                <li>Mon compte</li>
+                <li>Support produit</li>
+              </ul>
+            </div>
+
+            <!-- Partenaires -->
+            <div class="w-1/2 lg:w-1/5">
+              <h4 class="font-bold text-gray-800 mb-4">PARTENAIRE</h4>
+              <ul class="space-y-2 text-gray-600">
+                <li>Devenir Vendeur</li>
+                <li>Affiliation</li>
+                <li>Publicité</li>
+                <li>Partenariat</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <!-- Bottom Section -->
+        <!-- Section du bas -->
         <div class="flex flex-col lg:flex-row items-center justify-between">
-            <p class="text-gray-500 text-sm">Copyright © 2023 O’LO STORE. Tous droit réserver.</p>
-            <div class="flex items-center space-x-8 mt-4 lg:mt-0">
-                <!-- Logos (Placeholder for icons, replace with actual images if available) -->
-                <div class="w-10 h-10 bg-blue-300 rounded-full"></div>
-                <div class="w-10 h-10 bg-green-300 rounded-full"></div>
-            </div>
+          <p class="text-gray-500 text-sm">
+            Copyright © 2023 O’LO STORE. Tous droits réservés.
+          </p>
+          <div class="flex items-center space-x-8 mt-4 lg:mt-0">
+            <!-- Logos (espace réservé pour les icônes, remplacer par des images réelles si disponibles) -->
+            <div class="w-10 h-10 bg-blue-300 rounded-full"></div>
+            <div class="w-10 h-10 bg-green-300 rounded-full"></div>
+          </div>
         </div>
-    </div>
+      </div>
     </footer>
-    <!-- JavaScript for Google Maps -->
-     <script>
-        function initMap() {
-            // Replace with your actual latitude and longitude
-            var uluru = { lat: -0.7892, lng: 32.5825 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: uluru,
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
-    </script>
 
-</body>
+    <script src="../../static/store/js/script.js">
+
+
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+      });
+
+
+
+      function initMap() {
+          const location = { lat: 0.4162, lng: 9.4673 }; // Libreville, Gabon coordinates
+          const map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 15,
+              center: location,
+          });
+          const marker = new google.maps.Marker({
+              position: location,
+              map: map,
+          });
+      }
+
+
+      function increaseQuantity() {
+          let quantity = document.getElementById("quantity");
+          quantity.value = parseInt(quantity.value) + 1;
+      }
+
+      function decreaseQuantity() {
+          let quantity = document.getElementById("quantity");
+          if (parseInt(quantity.value) > 1) {
+              quantity.value = parseInt(quantity.value) - 1;
+          }
+      }
+
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const cardSlider = document.querySelector(".card-slider");
+          const totalCards = document.querySelectorAll(".card-slider .bg-white").length;
+
+          let currentIndex = 0;
+
+          function randomSlide() {
+            const randomDirection = Math.random() > 0.5 ? 1 : -1; // Choisit aléatoirement la direction
+            const newIndex = (currentIndex + randomDirection + totalCards) % totalCards;
+            cardSlider.style.transform = `translateX(-${newIndex * 100}%)`;
+            currentIndex = newIndex;
+          }
+
+          // Fonction qui active le défilement seulement en mode mobile/tablette
+          function checkScreenSizeAndStartSliding() {
+            if (window.innerWidth <= 1024) { // 1024px pour inclure mobile et tablette
+              // Lancer le défilement aléatoire
+              setInterval(randomSlide, 3000);
+            } else {
+              // Si l'écran est trop large, on s'assure que l'animation ne s'exécute pas
+              clearInterval(randomSlide);
+            }
+          }
+
+          // Initialisation du contrôle du défilement à la taille de l'écran
+          checkScreenSizeAndStartSliding();
+
+          // Vérifier la taille de l'écran à chaque redimensionnement
+          window.addEventListener("resize", checkScreenSizeAndStartSliding);
+        });
+    </script>
+  </body>
 </html>
