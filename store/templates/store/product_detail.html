@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Product Section -->
+    <div class="container mx-auto p-8 mt-9 flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-8">
+        <!-- Product Image -->
+        <div class="w-full lg:w-1/3 flex justify-center lg:justify-start">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="rounded-lg shadow-lg">
+            {% endif %}
+        </div>
+
+        <!-- Product Details -->
+        <div class="w-full mt-[50px] lg:w-1/3">
+            <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+            
+            <p class="text-3xl font-bold text-gray-800 mt-4">{{ product.price }}€</p>
+            <p class="text-gray-500">{{ product.description }}</p>
+
+            <ul class="text-gray-600 mt-4 space-y-1">
+                <li>• Qualité premium garantie</li>
+                <li>• Parfait pour tous vos besoins multimédias</li>
+                <li>• Garantie constructeur incluse</li>
+            </ul>
+
+
+
+            <!-- Stock Information -->
+            <div class="flex items-center space-x-4 mt-4">
+                <p class="text-gray-600">
+                    {% if product.stock > 0 %}
+                        {{ product.stock }} disponibles
+                    {% else %}
+                        Rupture de stock
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex space-x-4 mt-6">
+                {% if product.stock > 0 %}
+                    <a href="{% url 'add_to_cart' product.id %}" class="inline-block px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+                        Ajouter au panier
+                    </a>
+                {% endif %}
+                <a href="{% url 'product_list' %}" class="inline-block px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded hover:bg-gray-300">
+                    Retour à la liste des produits
+                </a>
+            </div>
+
+            <!-- Product Info -->
+
+        </div>
+
+        <!-- Brand Logo Placeholder -->
+        <div class="w-full lg:w-1/4 flex justify-center lg:justify-end">
+            <div class="bg-gray-200 w-64 h-96 flex flex-col items-center justify-start rounded-lg shadow-lg p-4">
+                <h2 class="text-lg font-bold mb-4">Panier</h2>
+                {% if cart %}
+                    <ul class="w-full">
+                        {% for item in cart.items %}
+                            <li class="mb-2">
+                                <span>{{ item.product.name }}</span> - 
+                                <span>x{{ item.quantity }}</span>
+                                <span class="block text-sm text-gray-600">{{ item.product.price }} $ chacun</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="mt-4">
+                        <strong>Total : {{ total_price }} $</strong>
+                    </div>
+                {% else %}
+                    <p class="text-gray-500">Votre panier est vide.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
