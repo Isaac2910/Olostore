@@ -152,7 +152,7 @@ def product_detail(request, product_id):
 #recherche
 def search_products(request):
     query = request.GET.get('q')
-    # Utilisez 'name' au lieu de 'nom'
+
     products = Product.objects.filter(name__icontains=query) if query else None
     return render(request, 'store/search_results.html', {'products': products, 'query': query})
 

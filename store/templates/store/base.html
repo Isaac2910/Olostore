@@ -54,12 +54,12 @@
 
       <nav id="menu" class="hidden md:flex space-x-4 text-white">
         <a
-          href="{% url 'products' %}"
+          href="{% url 'product_listes' %}"
           class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
           >Products</a
         >
         <a
-          href="{% url 'contact' %}"
+          href="#contact"
           class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
           >Contact</a
         >
@@ -85,12 +85,12 @@
     >
       <nav class="flex flex-col space-y-2 p-4">
         <a
-          href="{% url 'products' %}"
+          href="{% url 'product_listes' %}"
           class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
           >Products</a
         >
         <a
-          href="{% url 'contact' %}"
+          href="#contact"
           class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
           >Contact</a
         >
@@ -115,7 +115,7 @@
         type="submit"
         class="bg-black p-2 rounded-r text-white h-10 hover:bg-gray-800 transition-colors duration-300 icon-hover"
       >
-        Envoyer
+        Rechercher
       </button>
     </form>
 
@@ -419,7 +419,7 @@
           class="flex flex-col lg:flex-row justify-between border-b border-gray-300 pb-6 mb-6"
         >
           <!-- Informations de contact -->
-          <div class="mb-6 lg:mb-0">
+          <div class="mb-6 lg:mb-0" id="contact">
             <h3 class="font-bold text-lg">O’LO STORE</h3>
             <p class="mt-2">HOTLINE 24/7</p>
             <p class="text-green-600 font-bold text-lg">+241 074 XX XX XX</p>
