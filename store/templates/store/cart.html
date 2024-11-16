@@ -46,12 +46,13 @@
                     </button>
                 </div>
                 <button onclick="history.back()" class="mt-4 px-4 py-2 bg-blue-500 rounded-lg text-gray-700">
-                    Retour
+                   <a href="{% url 'product_list'%}">Retour </a>
                 </button>
             {% else %}
                 <p class="text-center">Votre panier est vide.</p>
             {% endif %}
         </div>
+        <a href="{% url 'product_list'%}" class="mt-4 px-4 py-2 bg-blue-500 rounded-lg text-gray-700">Retour </a>
 
     </div>
 

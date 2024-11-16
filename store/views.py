@@ -30,6 +30,14 @@ def product_list(request):
     return render(request, 'store/base.html', context)
 
 
+#recherche
+def search_products(request):
+    query = request.GET.get('q', '')
+    # Utilisez 'name' au lieu de 'nom'
+    products = Product.objects.filter(name__icontains=query) if query else None
+    return render(request, 'store/search_results.html', {'products': products, 'query': query})
+
+
 #pour le panier
 
 def add_to_cart(request, product_id):
@@ -149,12 +157,6 @@ def product_detail(request, product_id):
     return render(request, 'store/product_detail.html', context)
 
 
-#recherche
-def search_products(request):
-    query = request.GET.get('q')
-
-    products = Product.objects.filter(name__icontains=query) if query else None
-    return render(request, 'store/search_results.html', {'products': products, 'query': query})
 
 
 

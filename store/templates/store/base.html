@@ -71,11 +71,11 @@
           alt="Wishlist icon - Heart symbol in white"
           class="w-10 h-10 object-cover icon-hover"
         />
-        <img
+        <a href="{% url 'view_cart' %}"><img
           src="{% static 'store/image/Link.svg' %}"
           alt="User account icon - Profile symbol in white"
           class="w-10 h-10 object-cover icon-hover"
-        />
+        /></a>
       </div>
     </header>
 
@@ -101,6 +101,7 @@
       method="get"
       class="bg-[#1aba1a] my-2 p-4 flex justify-center mx-5 rounded-lg"
       role="search"
+      action="{% url 'search_products' %}"
     >
       <label for="search" class="sr-only">Search products</label>
       <input
@@ -109,7 +110,7 @@
         name="q"
         placeholder="Rechercher..."
         class="search-bar p-2 rounded-l w-2/3 h-10 focus:outline-none"
-        value="{{ query }}"
+        value="{{query|default:''}}"
       />
       <button
         type="submit"
