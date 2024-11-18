@@ -2,44 +2,61 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Résultats de recherche</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 font-sans">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 font-sans">
     <div class="max-w-6xl mx-auto p-8">
-        <h1 class="text-2xl font-bold text-center mb-8">Résultats de recherche</h1>
-        
-        {% if products %}
-            <h2 class="text-xl font-bold mb-4">Résultats de recherche pour "{{ query }}"</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {% for product in products %}
-                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                        {% if product.image %}
-                        <img
-                          src="{{ product.image.url }}"
-                          alt="{{ product.name }}"
-                          class="w-full h-40 object-cover rounded-lg mb-4"
-                        />
-                        {% endif %}
-                        <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-700">{{ product.price }} €</p>
-                        <a href="{% url 'product_detail' product.id %}" class="mt-2 inline-block text-green-600 hover:underline">Voir les détails</a>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="text-center text-gray-600">Aucun produit trouvé pour "{{ query }}".</p>
-        {% endif %}
-        
-        <div class="mt-8 flex justify-center">
-            <button onclick="history.back()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300">
-               <a href="{%url 'product_list' %}">Retour</a>
-            </button>
-        </div>
-    </div>
-</body>
-</html>
+      <h1 class="text-2xl font-bold text-center mb-8">
+        Résultats de recherche
+      </h1>
 
+      {% if products %}
+      <h2 class="text-xl font-bold mb-4">
+        Résultats de recherche pour "{{ query }}"
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for product in products %}
+        <div
+          class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+        >
+          {% if product.image %}
+          <img
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            class="w-full h-40 object-cover rounded-lg mb-4"
+          />
+          {% endif %}
+          <h3 class="text-lg font-semibold">{{ product.name }}</h3>
+          <p class="text-gray-700">{{ product.price }} €</p>
+          <a
+            href="{% url 'product_detail' product.id %}"
+            class="mt-2 inline-block text-green-600 hover:underline"
+            >Voir les détails</a
+          >
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-center text-gray-600">
+        Aucun produit trouvé pour "{{ query }}".
+      </p>
+      {% endif %}
+
+      <div class="mt-8 flex justify-center">
+        <button
+          onclick="history.back()"
+          class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300"
+        >
+          <a href="{%url 'product_list' %}">Retour</a>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
