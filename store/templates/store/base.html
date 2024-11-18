@@ -140,7 +140,7 @@
      </div>
         <div class="bg-black mx-5 rounded-b-lg w-full overflow-hidden relative">
           <div
-          class="flex scrolling-logos justify-evenly text-white lg:py-12  "
+          class="flex items-center justify-center text-white lg:py-12  "
         >
           <div class="flex flex-col items-center">
             <img
@@ -148,7 +148,7 @@
               src="../../static/store/image/Container.png"
               alt="Icon 1"
             />
-            <p class="text-center text-sm lg:text-lg md:text-base sm:text-sm">
+            <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
               Livraison<br />
               rapide
             </p>
@@ -159,7 +159,7 @@
               src="../../static/store/image/Container(3).png"
               alt="Icon 2"
             />
-            <p class="text-center">
+            <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
               Sécurité<br />
               garantie
             </p>
@@ -170,7 +170,7 @@
               src="../../static/store/image/Container (1).png"
               alt="Icon 3"
             />
-            <p class="text-center">
+            <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
               Satisfaction<br />
               garantie
             </p>
@@ -181,7 +181,7 @@
               src="../../static/store/image/Container (2).png"
               alt="Icon 3"
             />
-            <p class="text-center">
+            <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
               Contacter<br />
               nous 24h/7j
             </p>
@@ -189,41 +189,41 @@
         </div>
         </div>
       </main>
-     
-      
-
     </div>
+
+    <div class="bg-red gap-10">
+
     <!-- Tendance Section -->
     <section class="container mx-auto ">
       <div class="flex justify-between items-center ">
-        <h2 class="text-2xl font-bold my-10">Tendance</h2>
+        <h2 class="font-bold my-10 text-center text-lg ml-2">Tendance</h2>
       </div>
 
       <!-- Main Cards Wrapper -->
       <div class="cards-wrapper relative overflow-hidden">
         <div class="card-slider flex transition-transform duration-1000">
           <!-- Card 1 -->
-          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="bg-white shadow-md items-center justify-center flex rounded-lg overflow-hidden">
             <img
               src="../../static/store/image/1.png"
               alt="{{product.name}}"
-              class="w-full h-full object-cover duration-200 hover:scale-125"
+              class="w-[80%] h-[80%] object-cover duration-200 hover:scale-125"
             />
           </div>
           <!-- Card 2 -->
-          <div class="bg-white shadow-md rounded-lg mx-4 overflow-hidden">
+          <div class="bg-white shadow-md items-center justify-center flex rounded-lg mx-4 overflow-hidden">
             <img
               src="../../static/store/image/2.png"
               alt="{{product.name}}"
-              class="w-full h-full object-cover duration-200 hover:scale-125"
+              class="w-[80%] h-[80%] object-cover duration-200 hover:scale-125"
             />
           </div>
           <!-- Card 3 -->
-          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <div class="bg-white shadow-md items-center justify-center flex rounded-lg overflow-hidden">
             <img
               src="../../static/store/image/3.png"
               alt="{{product.name}}"
-              class="w-full h-full object-cover duration-200 hover:scale-125"
+              class="w-[80%] h-[80%] object-cover duration-200 hover:scale-125"
             />
           </div>
         </div>
@@ -231,9 +231,9 @@
     </section>
 
     <!-- Suggestions Section -->
-    <section class="container mx-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h2 id="produits" class="text-2xl font-bold">Produits</h2>
+    <section class="container mt-28">
+      <div class="flex justify-between ml-10 mr-10 items-center mb-6">
+        <h2 id="produits" class="font-bold text-lg">Produits</h2>
         <a href="{% url 'product_listes' %}" class="text-gray-500 hover:underline">Tout Voir</a>
       </div>
 
@@ -280,7 +280,7 @@
     <!-- Main Section -->
     <section class="container mx-auto">
       <!-- Title -->
-      <h2 class="text-3xl font-bold mb-6">à venir</h2>
+      <h2 class="text-lg font-bold mt-10 mb-6">à venir</h2>
 
       <!-- Grid Layout -->
       <div class="flex">
@@ -508,6 +508,7 @@
         </div>
       </div>
     </footer>
+  </div>
 
     <script src="../../static/store/js/script.js">
 
@@ -555,7 +556,7 @@
           let currentIndex = 0;
 
           function randomSlide() {
-            const randomDirection = Math.random() > 0.5 ? 1 : -1; // Choisit aléatoirement la direction
+            const randomDirection = Math.random() > 0.5 ? 0 : -1; // Choisit aléatoirement la direction
             const newIndex = (currentIndex + randomDirection + totalCards) % totalCards;
             cardSlider.style.transform = `translateX(-${newIndex * 100}%)`;
             currentIndex = newIndex;
