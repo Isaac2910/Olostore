@@ -155,6 +155,20 @@ header::before {
   );
   animation: shine 3s infinite;
 }
+  /* Style pour le cœur "aimé" */
+  #heart-icon.liked {
+    filter: brightness(0) saturate(100%) invert(39%) sepia(85%) saturate(556%)
+      hue-rotate(330deg) brightness(95%) contrast(89%);
+  }
+
+  /* Badge pour le panier */
+  #cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.75rem;
+  }
+
 
 @keyframes shine {
   to {
