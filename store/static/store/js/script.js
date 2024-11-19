@@ -49,3 +49,4 @@ function decreaseQuantity() {
     cartCount.textContent = itemCount;
     cartCount.classList.remove("hidden"); // Affiche le badge
   });
+
