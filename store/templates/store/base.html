@@ -20,77 +20,77 @@
   </head>
   <body>
     <header
-    class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg"
-  >
-    <img
-      src="{% static '/store/image/logo.svg' %}"
-      alt="O'LO Store Logo - Modern minimalist design in green and white"
-      class="w-24 h-24 object-cover logo-animate"
-    />
-  
-    <div class="md:hidden">
-      <button
-        id="menu-toggle"
-        class="text-white focus:outline-none icon-hover"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
-        </svg>
-      </button>
-    </div>
-  
-    <nav id="menu" class="hidden md:flex space-x-4 text-white">
-      <a
-        href="#produits"
-        class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
-        >Products</a
-      >
-      <a
-        href="#contact"
-        class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
-        >Contact</a
-      >
-    </nav>
-  
-    <div class="flex space-x-4">
-      <!-- Cœur -->
+      class="bg-black h-[96px] p-4 flex justify-evenly items-center mx-5 rounded-lg"
+    >
       <img
-        id="heart-icon"
-        src="{% static 'store/image/Like.svg' %}"
-        alt="Wishlist icon - Heart symbol in white"
-        class="w-10 h-10 object-cover icon-hover cursor-pointer"
+        src="{% static '/store/image/logo.svg' %}"
+        alt="O'LO Store Logo - Modern minimalist design in green and white"
+        class="w-24 h-24 object-cover logo-animate"
       />
-      <!-- Panier -->
-      <div class="relative">
+
+      <div class="md:hidden">
+        <button
+          id="menu-toggle"
+          class="text-white focus:outline-none icon-hover"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="menu" class="hidden md:flex space-x-4 text-white">
+        <a
+          href="#produits"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Products</a
+        >
+        <a
+          href="#contact"
+          class="nav-item hover:text-[#1aba1a] transition-colors duration-300"
+          >Contact</a
+        >
+      </nav>
+
+      <div class="flex space-x-4">
+        <!-- Cœur -->
         <img
-          id="cart-icon"
-          src="{% static 'store/image/Link.svg' %}"
-          alt="User account icon - Profile symbol in white"
+          id="heart-icon"
+          src="{% static 'store/image/Like.svg' %}"
+          alt="Wishlist icon - Heart symbol in white"
           class="w-10 h-10 object-cover icon-hover cursor-pointer"
         />
-        <!-- Badge pour le panier -->
-        <span
-          id="cart-count"
-          class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden"
-        >
-          0
-        </span>
+        <!-- Panier -->
+        <div class="relative">
+          <img
+            id="cart-icon"
+            src="{% static 'store/image/Link.svg' %}"
+            alt="User account icon - Profile symbol in white"
+            class="w-10 h-10 object-cover icon-hover cursor-pointer"
+          />
+          <!-- Badge pour le panier -->
+          <span
+            id="cart-count"
+            class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden"
+          >
+            0
+          </span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
     <div
       id="mobile-menu"
       class="hidden md:hidden bg-black text-white transform transition-transform duration-300 mx-1.5"
@@ -134,79 +134,78 @@
     <!-- Main Content -->
     <div>
       <main
-       class="flex justify-center items-center flex-col  bg-black mx-5 rounded-lg"
+        class="flex justify-center items-center flex-col bg-black mx-5 rounded-lg"
       >
-     <div  class="flex flex-col lg:flex-row justify-around items-center h-[] py-14 bg-black mx-5 rounded-t-lg">
-      <h1 class="text-2xl font-bold mb-4 text-white text-center lg:text-left lg:text-6xl md:text-3xl sm:text-2xl">
-        Trouvez ce que vous <br />
-        aimez, achetez ce<br />
-        que vous adorez !
-      </h1>
-      
-        <img
-          src="../../static/store/image/gif.gif"
-          alt="image"
-          class="object-cover w-[60%] h-[40%] rounded-xl lg:w-[30%] lg:h-[70%] "
-        />
-     </div>
-        <div class="bg-black mx-5 rounded-b-lg w-full overflow-hidden relative">
-          <div
-          class="flex scrolling-logos justify-evenly text-white lg:py-12  "
+        <div
+          class="flex flex-col lg:flex-row justify-around items-center h-[] py-14 bg-black mx-5 rounded-t-lg"
         >
-          <div class="flex flex-col items-center">
-            <img
-              class="h-10 w-10 mx-6"
-              src="../../static/store/image/Container.png"
-              alt="Icon 1"
-            />
-            <p class="text-center text-xs  lg:text-lg md:text-base sm:text-sm">
-              Livraison<br />
-              rapide
-            </p>
-          </div>
-          <div class="flex flex-col items-center mx-6">
-            <img
-              class="h-10 w-10 mx-6"
-              src="../../static/store/image/Container(3).png"
-              alt="Icon 2"
-            />
-            <p class="text-center text-xs">
-              Sécurité<br />
-              garantie
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <img
-              class="h-10 w-10 mx-6"
-              src="../../static/store/image/Container (1).png"
-              alt="Icon 3"
-            />
-            <p class="text-center text-xs">
-              Satisfaction<br />
-              garantie
-            </p>
-          </div>
-          <div class="flex flex-col items-center">
-            <img
-              class="h-10 w-10 mx-6"
-              src="../../static/store/image/Container (2).png"
-              alt="Icon 3"
-            />
-            <p class="text-center text-xs">
-              Contacter<br />
-              nous 24h/7j
-            </p>
-          </div>
+          <h1
+            class="text-2xl font-bold mb-4 text-white text-center lg:text-left lg:text-6xl md:text-3xl sm:text-2xl"
+          >
+            Trouvez ce que vous <br />
+            aimez, achetez ce<br />
+            que vous adorez !
+          </h1>
+
+          <img
+            src="../../static/store/image/gif.gif"
+            alt="image"
+            class="object-cover w-[60%] h-[40%] rounded-xl lg:w-[30%] lg:h-[70%]"
+          />
         </div>
+        <div class="bg-black mx-5 rounded-b-lg w-full overflow-hidden relative">
+          <div class="flex scrolling-logos justify-evenly text-white lg:py-12">
+            <div class="flex flex-col items-center">
+              <img
+                class="h-10 w-10 mx-6"
+                src="../../static/store/image/Container.png"
+                alt="Icon 1"
+              />
+              <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
+                Livraison<br />
+                rapide
+              </p>
+            </div>
+            <div class="flex flex-col items-center mx-6">
+              <img
+                class="h-10 w-10 mx-6"
+                src="../../static/store/image/Container(3).png"
+                alt="Icon 2"
+              />
+              <p class="text-center text-xs">
+                Sécurité<br />
+                garantie
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                class="h-10 w-10 mx-6"
+                src="../../static/store/image/Container (1).png"
+                alt="Icon 3"
+              />
+              <p class="text-center text-xs">
+                Satisfaction<br />
+                garantie
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                class="h-10 w-10 mx-6"
+                src="../../static/store/image/Container (2).png"
+                alt="Icon 3"
+              />
+              <p class="text-center text-xs">
+                Contacter<br />
+                nous 24h/7j
+              </p>
+            </div>
+          </div>
         </div>
       </main>
-     
-      
-
     </div>
     <!-- Tendance Section -->
-    <section class="container mx-auto ">
-      <div class="flex justify-between items-center ">
+    <section class="container mx-auto">
+      <div class="flex justify-between items-center">
         <h2 class="text-2xl ml-3 mt-3 font-bold my-10">Tendance</h2>
       </div>
 
@@ -245,7 +244,11 @@
     <section class="container mx-auto">
       <div class="flex justify-between items-center mb-6">
         <h2 id="produits" class="text-2xl mt-3 ml-3 font-bold">Produits</h2>
-        <a href="{% url 'product_listes' %}" class="text-gray-500 hover:underline">Tout Voir</a>
+        <a
+          href="{% url 'product_listes' %}"
+          class="text-gray-500 hover:underline"
+          >Tout Voir</a
+        >
       </div>
 
       <!-- Product Grid -->
@@ -261,10 +264,14 @@
                 <img
                   src="{{ product.image.url }}"
                   alt="{{ product.name }}"
-                  class="w-full h-40 object-cover rounded-lg mb-4"
+                  class="w-full h-40 object-cover rounded-lg mb-4 duration-200 hover:scale-105"
                 />
                 {% endif %}
-                <h3 class="text-lg font-semibold"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
+                <h3 class="text-lg font-semibold">
+                  <a href="{% url 'product_detail' product.id %}"
+                    >{{ product.name }}</a
+                  >
+                </h3>
                 <p class="text-gray-500">{{ product.price }}</p>
                 <div class="flex items-center text-yellow-500 mb-2">
                   <span>★★★★☆</span>
@@ -272,16 +279,17 @@
                 <button
                   class="inline-block px-2 py-1 text-xs bg-black text-white rounded"
                 >
-                  <a href="{% url 'add_to_cart' product.id %}">Ajouter au panier</a>
+                  <a href="{% url 'add_to_cart' product.id %}"
+                    >Ajouter au panier</a
+                  >
                 </button>
                 <button
-                class="inline-block px-2 py-1 text-xs bg-[#1aba1a] text-white rounded"
-              >
-                <a href="{% url 'checkout1'  product.id %}">Commander</a>
-              </button>
+                  class="inline-block px-2 py-1 text-xs bg-[#1aba1a] text-white rounded"
+                >
+                  <a href="{% url 'checkout1'  product.id %}">Commander</a>
+                </button>
               </div>
 
-             
               {% endfor %}
             </div>
           </div>
@@ -292,18 +300,19 @@
     <section class="container mx-auto mt-6">
       <!-- Title -->
       <h2 class="text-3xl font-bold mb-6 ml-3 mt-3">à venir</h2>
-    
+
       <!-- Grid Layout -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
         <!-- Large Featured Card -->
-        <div class="bg-black text-white overflow-hidden relative col-span-1 md:col-span-2">
+        <div
+          class="bg-black text-white overflow-hidden relative col-span-1 md:col-span-2"
+        >
           {% if product.image %}
-            <img
-              src="../../static/store/image/WhatsApp Image 2024-11-09 at 11.21.46.jpeg"
-              alt="{{product.name}}"
-              class="w-full h-64 object-cover opacity-75"
-            />
+          <img
+            src="../../static/store/image/WhatsApp Image 2024-11-09 at 11.21.46.jpeg"
+            alt="{{product.name}}"
+            class="w-full h-64 object-cover opacity-75"
+          />
           {% endif %}
           <div class="absolute inset-0 flex flex-col justify-end p-6">
             <h3 class="text-2xl font-semibold mb-2">{{product.name}}</h3>
@@ -315,12 +324,13 @@
             >
           </div>
         </div>
-    
+
         <!-- Secondary Cards Section -->
         <div class="bg-white w-full flex flex-wrap gap-4">
-          
           <!-- Secondary Card 1 -->
-          <div class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative">
+          <div
+            class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative"
+          >
             <img
               src="../../static/store/image/bad.jpeg"
               alt="{{product.name}}"
@@ -336,9 +346,11 @@
               >
             </div>
           </div>
-    
+
           <!-- Secondary Card 2 -->
-          <div class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative">
+          <div
+            class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative"
+          >
             <img
               src="../../static/store/image/go.jpeg"
               alt="{{product.name}}"
@@ -354,9 +366,11 @@
               >
             </div>
           </div>
-    
+
           <!-- Secondary Card 3 -->
-          <div class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative">
+          <div
+            class="bg-gray-900 w-full sm:w-[48%] md:w-[48%] lg:w-full text-white overflow-hidden relative"
+          >
             <img
               src="../../static/store/image/your-image.jpg"
               alt="{{product.name}}"
@@ -375,7 +389,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Main Container -->
     <div id="contact" class="container mx-auto p-4">
       <!-- Header Section -->
@@ -483,7 +497,7 @@
             <div class="w-1/2 lg:w-1/5 mb-6 lg:mb-0">
               <h4 class="font-bold text-gray-800 mb-4">ENTREPRISE</h4>
               <ul class="space-y-2 text-gray-600">
-                <li>À propos </li>
+                <li>À propos</li>
                 <li>Contact</li>
                 <li>Carrière</li>
                 <li>Blog</li>
