@@ -50,3 +50,61 @@ function decreaseQuantity() {
     cartCount.classList.remove("hidden"); // Affiche le badge
   });
 
+
+  function updateFixedCartButton() {
+    const cartTotal = document.querySelector('.cart-total');
+    const items = document.querySelectorAll('tbody tr').length;
+    cartTotal.textContent = items + ' articles';
+
+    cartTotal.classList.add('animate__animated', 'animate__pulse');
+    setTimeout(() => {
+        cartTotal.classList.remove('animate__animated', 'animate__pulse');
+    }, 1000);
+}
+
+updateCartCount(); // Initial update of the cart count
+updateFixedCartButton(); // Initial update of the fixed cart button
+
+// incrementation 
+// Initialize cart functionality
+let cartCount = 0;
+const cartCountElement = document.getElementById('cart-count');
+const cartButton = document.querySelector('#fixed-cart-button button');
+
+function updateCartCount(count) {
+  cartCount = count;
+  cartCountElement.textContent = count;
+  
+  // Show/hide the count badge
+  if (count > 0) {
+    cartCountElement.classList.remove('hidden');
+  } else {
+    cartCountElement.classList.add('hidden');
+  }
+  
+  // Add bump animation
+  cartCountElement.classList.add('bump');
+  setTimeout(() => {
+    cartCountElement.classList.remove('bump');
+  }, 300);
+  
+  // Optionally save to localStorage
+  localStorage.setItem('cartCount', count);
+}
+
+// Load initial cart count from localStorage if exists
+const savedCount = localStorage.getItem('cartCount');
+if (savedCount) {
+  updateCartCount(parseInt(savedCount));
+}
+
+// Add click handler to increment cart
+cartButton.addEventListener('click', () => {
+  updateCartCount(cartCount + 1);
+  
+  // Add bounce animation to cart icon
+  cartButton.querySelector('i').classList.add('animate__animated', 'animate__bounce');
+  setTimeout(() => {
+    cartButton.querySelector('i').classList.remove('animate__animated', 'animate__bounce');
+  }, 1000);
+});

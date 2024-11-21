@@ -8,6 +8,14 @@
     <title>O'lo Store</title>
     <link rel="stylesheet" href="../../static/store/css/global.css" />
     <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
@@ -210,23 +218,17 @@
         <h2 class="text-2xl ml-3 mt-3 font-bold my-10">Tendance</h2>
       </div>
 
-      <!-- voici le panier fixe ici  -->
+      <!-- voici le panier -->
 
-      <div class="relative fixed bottom-4 right-4 z-50">
-        <!-- Icône du panier -->
-        <img
-          id="cart-icon"
-          src="{% static 'store/image/Link.svg' %}"
-          alt="User account icon - Profile symbol in white"
-          class="w-10 h-10 object-cover icon-hover cursor-pointer"
-        />
-        <!-- Badge pour le panier (par défaut caché) -->
-        <span
-          id="cart-count"
-          class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden"
-        >
-          0
-        </span>
+      <div id="fixed-cart-button" class="fixed bottom-6 right-6 z-50 animate__animated animate__bounceIn">
+        <button class="bg-[#1aba1ad3] hover:bg-[#1aba1a] text-white rounded-xl p-2 shadow-lg transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-1">
+          <i class="fas fa-shopping-cart text-2xl"></i>
+          <div class="flex flex-col items-start">
+            <span id="cart-count" class="absolute z-50 top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">
+              0
+            </span>
+          </div>
+        </button>
       </div>
 
       <!-- Main Cards Wrapper -->
