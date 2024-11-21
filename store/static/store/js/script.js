@@ -32,3 +32,21 @@ function decreaseQuantity() {
         quantity.value = parseInt(quantity.value) - 1;
     }
 }
+
+  // Cœur : Changement de couleur au clic
+  const heartIcon = document.getElementById("heart-icon");
+  heartIcon.addEventListener("click", () => {
+    heartIcon.classList.toggle("liked"); // Ajoute/enlève la classe "liked"
+  });
+
+  // Panier : Mise à jour du badge
+  const cartIcon = document.getElementById("cart-icon");
+  const cartCount = document.getElementById("cart-count");
+  let itemCount = 0;
+
+  cartIcon.addEventListener("click", () => {
+    itemCount++;
+    cartCount.textContent = itemCount;
+    cartCount.classList.remove("hidden"); // Affiche le badge
+  });
+
