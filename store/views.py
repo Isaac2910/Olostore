@@ -89,7 +89,7 @@ def checkout(request, product_id=None, quantity=1):
         quantity (int, optional): La quantité du produit à commander. Par défaut, 1.
     """
     cart = request.session.get('cart', {})
-    phone_number = '074160680'
+    phone_number = '+24174160680'
     message = "Bonjour, je souhaite commander les produits suivants :\n\n"
 
     if product_id:
@@ -112,7 +112,7 @@ def checkout(request, product_id=None, quantity=1):
     whatsapp_url = f"https://wa.me/{phone_number}?text={urllib.parse.quote(message)}"
     return redirect(whatsapp_url)
 
-
+from django.shortcuts import render
 
 
 def checkout1(request, product_id, quantity=1):
@@ -124,7 +124,7 @@ def checkout1(request, product_id, quantity=1):
         product_id (int): L'ID du produit à commander.
         quantity (int, optional): La quantité du produit à commander. Par défaut, 1.
     """
-    phone_number = '074160680'
+    phone_number = '+24174160680'
     product = get_object_or_404(Product, pk=product_id)
     
     # Construire le message de commande
