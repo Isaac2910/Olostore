@@ -162,7 +162,7 @@
                 src="../../static/store/image/Container.png"
                 alt="Icon 1"
               />
-              <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm">
+              <p class="text-center text-xs lg:text-lg md:text-base sm:text-sm mt-2">
                 Livraison<br />
                 rapide
               </p>
@@ -173,7 +173,7 @@
                 src="../../static/store/image/Container(3).png"
                 alt="Icon 2"
               />
-              <p class="text-center text-xs">
+              <p class="text-center text-xs mt-2">
                 Sécurité<br />
                 garantie
               </p>
@@ -184,18 +184,18 @@
                 src="../../static/store/image/Container (1).png"
                 alt="Icon 3"
               />
-              <p class="text-center text-xs">
+              <p class="text-center text-xs mt-2">
                 Satisfaction<br />
                 garantie
               </p>
             </div>
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center ml-4">
               <img
                 class="h-10 w-10 mx-6"
                 src="../../static/store/image/Container (2).png"
                 alt="Icon 3"
               />
-              <p class="text-center text-xs">
+              <p class="text-center text-xs mt-2">
                 Contacter<br />
                 nous 24h/7j
               </p>
@@ -210,12 +210,23 @@
       <div class="flex justify-between items-center">
         <h2 class="text-2xl ml-3 mt-3 font-bold my-10">Tendance</h2>
       </div>
+
+             <!-- voici le button fixe whatsapp -->
+      <div class="fixed bottom-20 right-6 z-50 animate__animated animate__bounceIn">
+        <a href=" https://wa.me/qr/G2HKTYZDKPJEG1 ">
+          <button class="bg-[#1aba1ad3] hover:bg-[#1aba1a] text-white rounded-xl p-2 shadow-lg transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-1">
+            <i class="fab fa-whatsapp text-2xl"></i>
+          </button>
+        </a>
+
+
+      
  <!-- voici le panier -->
       <div id="fixed-cart-button" class="fixed bottom-6 right-6 z-50 animate__animated animate__bounceIn">
         <button class="bg-[#1aba1ad3] hover:bg-[#1aba1a] text-white rounded-xl p-2 shadow-lg transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-1">
           <a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart text-2xl"></i>
           <div class="flex flex-col items-start">
-            <span id="cart-count" class="absolute z-50 top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">
+            <span id="cart-count" class="absolute z-50 top-0 right-0 bg-red-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">
               0
             </span>
           </a> 
