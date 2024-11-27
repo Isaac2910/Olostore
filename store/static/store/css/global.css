@@ -216,7 +216,15 @@ header::before {
     transition: transform 1s ease-in-out;
   }
 
-  .card-slider .bg-white {
+  .card-slider{
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+   .bg-white {
+    
     min-width: 100%; /* Les cartes s'adaptent à la largeur de l'écran */
   }
   .overflow-x-auto {
@@ -230,6 +238,10 @@ header::before {
       font-size: 10px;
       font-weight: 400;
     }
+  }
+  .containers {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
