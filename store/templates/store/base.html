@@ -223,16 +223,19 @@
 
       
  <!-- voici le panier -->
-      <div id="fixed-cart-button" class="fixed bottom-6 right-6 z-50 animate__animated animate__bounceIn">
+      <div id="fixed-cart-button" class="cart fixed bottom-6 right-6 z-50 animate__animated animate__bounceIn">
         <button class="bg-[#1aba1ad3] hover:bg-[#1aba1a] text-white rounded-xl p-2 shadow-lg transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-1">
-          <a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart text-2xl"></i>
-          <div class="flex flex-col items-start">
-            <span id="cart-count" class="absolute z-50 top-0 right-0 bg-red-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">
-              0
-            </span>
+          <a href="{% url 'view_cart' %}">
+          <div class="cart flex flex-col  ">
+            <i class="fas fa-shopping-cart text-2xl"></i>
+
           </a> 
           </div>
         </button>
+        <div id="count" class="flex badge-counter absolute right-0 top-0 bg-red-500 text-white px-2 py-1 rounded-full">
+          0
+        </div>
+        
       </div>
       <!-- Main Cards Wrapper -->
       <div class="cards-wrapper relative overflow-hidden">
@@ -302,7 +305,8 @@
                   <span>★★★★☆</span>
                 </div>
                 <button
-                  class="inline-block px-2 py-1 text-xs bg-black text-white rounded"
+                  class=" inline-block px-2 py-1 text-xs bg-black text-white rounded"
+                  data-id="{{ product.id }}"     
                 >
                   <a href="{% url 'add_to_cart' product.id %}"
                     >Ajouter au panier</a

@@ -67,7 +67,7 @@ updateFixedCartButton(); // Initial update of the fixed cart button
 
 // incrementation 
 // Initialize cart functionality
-let cartCount = 0;
+let cartCounte = 0;
 const cartCountElement = document.getElementById('cart-count');
 const cartButton = document.querySelector('#fixed-cart-button button');
 
@@ -133,6 +133,8 @@ function addToCart(productId) {
 
 // Afficher le contenu du panier (optionnel, pour des tests rapides)
 function displayCart() {
+    let j = 0;
+    document.getElementById('count').innerHTML=cart.length;
     let cart = JSON.parse(localStorage.getItem('cart')) || {};
     let cartDisplay = document.getElementById('cart-display');
     cartDisplay.innerHTML = ''; // Réinitialiser l'affichage
@@ -161,3 +163,34 @@ document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
 ///<button id="clear-cart-btn">Vider le panier</button>
 
 //<div id="cart-display"></div>
+
+
+///jqryption
+
+document.addEventListener('DOMContentLoaded', function() {
+  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+  const cartCount = document.getElementById('cart-count');
+  let itemCount = 0; // Initialisation du nombre d'articles
+  
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+      const productId = this.getAttribute('data-id');
+      
+      // Simule l'ajout au panier, envoie des données via fetch pour une vraie requête
+      itemCount++;
+      updateCartDisplay(itemCount);
+    });
+  });
+
+  function updateCartDisplay(count) {
+    cartCount.textContent = count;
+    cartCount.classList.remove('hidden'); // Affiche le compteur s'il était caché
+  }
+});
+
+const cart =document.querySelector('.cart');
+let close = false;
+let body = document.querySelector('body');
+
+count.increaseQuantity();
